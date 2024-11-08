@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Icon } from "../Elements/Icon"; // Pastikan file dan komponen Icon ada
 import Logo from "../Elements/Logo";
 
@@ -49,24 +50,24 @@ const Navbar = () => {
   ];
 
   return (
-    <div className=" bg-defaultBlack">
+  <div className = "bg-defaultBlack">
     <nav className="sticky top-0 text-special-bg2 sm:w-72 w-28 min-h-screen px-7 py-12 flex flex-col justify-between">
       <div>
-        <div className="flex justify-center mb-10">
+        <NavLink to="/" className="flex justify-center mb-10">
           <Logo variant="text-white text-sm sm:text-2x1" />
-        </div>
+        </NavLink>
         {menus.map((menu) => (
-          <Link 
-            key={menu.id} 
-            to={menu.link}
-            className={({ isActive }) =>
-              isActive
-                ? "flex bg-primary text-white font-bold px-4 py-3 rounded-md"
-                : "flex hover:bg-special-bg3 hover:text-white px-4 py-3 rounded-md"
-            }>   
-            <div className="mx-auto sm:mx-0">{menu.icon}</div>
-            <div className="ms-3 hidden sm:block">{menu.label}</div>
-          </Link>
+          <NavLink
+          key={menu.id}
+          to={menu.link}
+          className={({ isActive }) => 
+            isActive
+          ? "flex bg-primary text-white font-bold px-4 py-3 rounded md"
+          : "flex hover:bg-special-bg3 hover:text-white px-4 py-3 rounded-md"
+        }>
+              <div className="mx-auto sm:mx-0">{menu.icon}</div>
+              <div className="ms-3 hidden sm:block">{menu.label}</div>
+          </NavLink>
         ))}
       </div>
       <div className="sticky bottom-12">
@@ -95,7 +96,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  </div>
+    </div>
   );
 };
 
